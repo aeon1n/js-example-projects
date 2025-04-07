@@ -35,6 +35,8 @@ btnCalc?.addEventListener("click", () => {
   let endValue = parseInt(end.value);
   let incrementValue = parseInt(increment.value);
 
+  calcResults = [];
+
   formData = {
     start: startValue,
     end: endValue,

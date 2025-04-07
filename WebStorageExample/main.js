@@ -16,6 +16,7 @@ btnCalc === null || btnCalc === void 0 ? void 0 : btnCalc.addEventListener("clic
     let startValue = parseInt(start.value);
     let endValue = parseInt(end.value);
     let incrementValue = parseInt(increment.value);
+    calcResults = [];
     formData = {
         start: startValue,
         end: endValue,
