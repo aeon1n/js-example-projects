@@ -3,20 +3,22 @@ const dropzone = document.querySelector("#dropzone");
 const filezone = document.querySelector("#filezone");
 const progressBar = document.querySelector("#progress-bar");
 const progressLabel = document.querySelector("#progress-label");
+/* set bg color to darker gray when dragging a file into container */
 dropzone.addEventListener("dragenter", () => {
     dropzone.classList.replace("bg-gray-50", "bg-gray-300");
 });
+/* revert color when container is left */
 dropzone.addEventListener("dragleave", (e) => {
     const related = e.relatedTarget;
     if (!related || !dropzone.contains(related)) {
         dropzone.classList.replace("bg-gray-300", "bg-gray-50");
     }
 });
+/* dragover prevend default */
 dropzone.addEventListener("dragover", (e) => {
     e.preventDefault();
 });
 dropzone.addEventListener("drop", (e) => {
-    e.stopPropagation();
     e.preventDefault();
     dropzone.classList.replace("bg-gray-300", "bg-gray-50");
     const dt = e.dataTransfer;
@@ -61,12 +63,14 @@ dropzone.addEventListener("drop", (e) => {
     }
     filezone.classList.remove("hidden");
 });
+/* Helper functions */
 function countLetterFrequency(toCount) {
     const letterCount = {};
     for (let charCode = 97; charCode <= 122; charCode++) {
         const letter = String.fromCharCode(charCode);
         letterCount[letter] = 0;
     }
+    toCount = toCount.toLocaleLowerCase();
     for (let char of toCount) {
         if (char >= "a" && char <= "z") {
             letterCount[char]++;

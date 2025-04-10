@@ -6,10 +6,12 @@ const progressLabel = document.querySelector(
   "#progress-label"
 ) as HTMLSpanElement;
 
+/* set bg color to darker gray when dragging a file into container */
 dropzone.addEventListener("dragenter", () => {
   dropzone.classList.replace("bg-gray-50", "bg-gray-300");
 });
 
+/* revert color when container is left */
 dropzone.addEventListener("dragleave", (e) => {
   const related = e.relatedTarget as Node | null;
   if (!related || !dropzone.contains(related)) {
@@ -17,12 +19,12 @@ dropzone.addEventListener("dragleave", (e) => {
   }
 });
 
+/* dragover prevend default */
 dropzone.addEventListener("dragover", (e) => {
   e.preventDefault();
 });
 
 dropzone.addEventListener("drop", (e) => {
-  e.stopPropagation();
   e.preventDefault();
 
   dropzone.classList.replace("bg-gray-300", "bg-gray-50");
@@ -81,6 +83,8 @@ dropzone.addEventListener("drop", (e) => {
   filezone.classList.remove("hidden");
 });
 
+/* Helper functions */
+
 function countLetterFrequency(toCount: string) {
   const letterCount: { [key: string]: number } = {};
 
@@ -88,6 +92,8 @@ function countLetterFrequency(toCount: string) {
     const letter = String.fromCharCode(charCode);
     letterCount[letter] = 0;
   }
+
+  toCount = toCount.toLocaleLowerCase();
 
   for (let char of toCount) {
     if (char >= "a" && char <= "z") {
