@@ -84,7 +84,6 @@ dropzone.addEventListener("drop", (e) => {
 });
 
 /* Helper functions */
-
 function countLetterFrequency(toCount: string) {
   const letterCount: { [key: string]: number } = {};
 
